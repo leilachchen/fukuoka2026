@@ -21,8 +21,8 @@ a{color:inherit}
 
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--paper);border-bottom:var(--line)}
-nav ul{list-style:none;display:flex;justify-content:space-between;gap:4px;max-width:720px;margin:0 auto;padding:10px 12px}
-nav a{display:block;text-decoration:none;font-size:13px;padding:6px 10px;border:2px solid transparent;border-radius:999px;white-space:nowrap}
+nav ul{list-style:none;display:flex;justify-content:center;gap:6px;max-width:720px;margin:0 auto;padding:8px 12px}
+nav a{display:block;text-decoration:none;font-size:13px;padding:5px 12px;border:2px solid transparent;border-radius:999px;white-space:nowrap}
 nav a:hover,nav a:focus-visible{border-color:var(--ink);background:var(--yellow-l);outline:none}
 
 main{max-width:720px;margin:0 auto;padding:72px 16px 40px}
@@ -40,11 +40,9 @@ h2 .dot{width:18px;height:18px;border:var(--line);border-radius:50%;flex:none}
 .hero h1{font-size:24px;font-weight:400;margin-top:16px;letter-spacing:2px}
 .hero .sub{font-size:13px;margin-top:2px}
 .countdown{display:flex;justify-content:center;gap:10px;margin-top:16px}
-.cd{width:64px;background:#fff;border:var(--line);border-radius:18px;padding:8px 0}
-.cd b{display:block;font-size:20px;font-weight:400;line-height:1.2}
-.cd span{font-size:12px}
-.cd:nth-child(1){background:var(--coral-l)}.cd:nth-child(2){background:var(--yellow-l)}
-.cd:nth-child(3){background:var(--water-l)}.cd:nth-child(4){background:var(--green-l)}
+.cd{display:flex;align-items:baseline;gap:8px;background:var(--yellow-l);border:var(--line);border-radius:18px;padding:6px 18px}
+.cd b{font-size:24px;font-weight:400;line-height:1.2}
+.cd span{font-size:13px}
 
 /* flights */
 .flights{display:grid;gap:14px}
@@ -57,7 +55,6 @@ h2 .dot{width:18px;height:18px;border:var(--line);border-radius:50%;flex:none}
 .route .end.r{text-align:right}
 .route .mid{display:flex;flex-direction:column;align-items:center;gap:4px}
 .route .mid em{font-style:normal;font-size:12px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:0 8px}
-.route .mid i{display:block;width:100%;border-top:3px dashed var(--ink)}
 .stub{position:relative;border-top:3px dashed var(--ink);margin:0 -16px;}
 .stub::before,.stub::after{content:"";position:absolute;top:-13px;width:22px;height:22px;border:3px solid var(--ink);border-radius:50%;background:var(--paper)}
 .stub::before{left:-17px;clip-path:inset(0 0 0 50%)}
@@ -66,10 +63,10 @@ h2 .dot{width:18px;height:18px;border:var(--line);border-radius:50%;flex:none}
 .flight dt{opacity:.7;font-size:12px;padding-top:1px;white-space:nowrap}
 
 /* days */
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:4px 0 10px}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:none;font-family:inherit;color:var(--ink);background:#fff;border:var(--line);border-radius:18px;padding:6px 12px;text-align:center;cursor:pointer;min-width:62px}
-.tab b{display:block;font-size:15px;font-weight:400;line-height:1.2}
+.tab{min-width:0;font-family:inherit;color:var(--ink);background:#fff;border:var(--line);border-radius:16px;padding:6px 0;text-align:center;cursor:pointer}
+.tab b{display:block;font-size:14px;font-weight:400;line-height:1.2}
 .tab span{font-size:12px}
 .tab[aria-selected="true"]{background:var(--yellow)}
 .tab:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
@@ -80,11 +77,9 @@ h2 .dot{width:18px;height:18px;border:var(--line);border-radius:50%;flex:none}
 .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;border-left:3px dashed var(--ink)}
 .tl{position:relative;margin-bottom:14px}
 .tl::before{content:"";position:absolute;left:-26px;top:18px;width:16px;height:16px;border:var(--line);border-radius:50%;background:var(--paper)}
-.tl.must::before{background:var(--coral)}
 .tl .card{padding:12px 14px}
 .tl time{font-size:12px;background:var(--water-l);border:2px solid var(--ink);border-radius:8px;padding:0 6px}
 .tl h4{font-size:15px;font-weight:400;margin:6px 0 4px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.must-tag{font-size:12px;background:var(--coral);border:2px solid var(--ink);border-radius:999px;padding:0 8px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .tag{font-size:12px;border:2px solid var(--ink);border-radius:999px;padding:0 8px}
 .t-fly{background:var(--water)}.t-train{background:var(--green)}.t-metro{background:var(--yellow)}
@@ -211,12 +206,8 @@ footer{text-align:center;font-size:12px;padding:24px 16px 40px;opacity:.75}
   <h1>福岡美食小旅行</h1>
   <p class="sub">台北 ✈ 福岡｜2026/12/13（日）– 12/17（四）</p>
   <div class="countdown" aria-live="polite">
-    <div class="cd"><b id="cd-d">--</b><span>天</span></div>
-    <div class="cd"><b id="cd-h">--</b><span>時</span></div>
-    <div class="cd"><b id="cd-m">--</b><span>分</span></div>
-    <div class="cd"><b id="cd-s">--</b><span>秒</span></div>
+    <div class="cd"><span>出發倒數</span><b id="cd-d">--</b><span>天</span></div>
   </div>
-  <p class="note" style="margin-top:8px">倒數至 12/13 08:00 起飛（台北時間）</p>
 </section>
 
 <!-- FLIGHTS -->
@@ -227,26 +218,24 @@ footer{text-align:center;font-size:12px;padding:24px 16px 40px;opacity:.75}
       <div class="top"><span class="badge" style="background:var(--water)">去程</span>12/13（日）</div>
       <div class="route">
         <div class="end"><b>08:00</b><span>TPE 桃園 T2</span></div>
-        <div class="mid"><em>2h15m</em><i></i></div>
+        <div class="mid"><em>2h15m</em></div>
         <div class="end r"><b>11:15</b><span>FUK 福岡 T I</span></div>
       </div>
       <div class="stub"></div>
       <dl>
         <dt>航班</dt><dd>長榮航空 BR 106</dd>
-        <dt>時間</dt><dd>皆為當地時間（日本比台灣快 1 小時）</dd>
       </dl>
     </article>
     <article class="card flight" style="background:var(--coral-l)">
       <div class="top"><span class="badge" style="background:var(--coral)">回程</span>12/17（四）</div>
       <div class="route">
         <div class="end"><b>20:55</b><span>FUK 福岡 T I</span></div>
-        <div class="mid"><em>2h45m</em><i></i></div>
+        <div class="mid"><em>2h45m</em></div>
         <div class="end r"><b>22:40</b><span>TPE 桃園 T2</span></div>
       </div>
       <div class="stub"></div>
       <dl>
         <dt>航班</dt><dd>長榮航空 BR 101</dd>
-        <dt>時間</dt><dd>皆為當地時間（日本比台灣快 1 小時）</dd>
       </dl>
     </article>
   </div>
@@ -289,7 +278,7 @@ footer{text-align:center;font-size:12px;padding:24px 16px 40px;opacity:.75}
 <footer>Made for 2026 冬天的福岡 ♡</footer>
 
 <script>
-const DEPART = new Date("2026-12-13T08:00:00+08:00");
+const DEPART = new Date("2026-12-13T00:00:00+08:00");
 const q = n => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(n);
 
 const HOTEL_MAP = "https://maps.app.goo.gl/Srjkb7Fb7hiFcZqG8?g_st=ic";
@@ -305,22 +294,22 @@ const DAYS = [
     { time:"10:20", title:"從飯店出發 → 博多站", note:"建議：七隈線 櫛田神社前 → 博多（1 站），或搭計程車。", tags:[["地下鐵","metro"],["計程車","taxi"]] },
     { time:"10:50–11:00", title:"博多 → 小倉（山陽新幹線）", note:"約 15–17 分鐘，自由席 2,160 円，班次頻繁、每班都停小倉。實際班次請在出發前查 JR 時刻表確認。", tags:[["新幹線","train"]] },
     { time:"約 11:15", title:"小倉站 → Bekk", note:"小倉站步行約 10 分鐘；或搭單軌電車到旦過站，步行約 3 分鐘。", tags:[["步行","walk"],["單軌電車","metro"]] },
-    { time:"11:50", title:"Bekk（イタリアン）", must:true, note:"Pocket Concierge 預約。需在 11:50 前入店，12:00 全員一起開始，約 14:00 結束。", tags:[["Pocket Concierge","book"]], addr:"福岡県北九州市小倉北区魚町4-3-8 モナトリエ 1F", map:"Bekk 福岡県北九州市小倉北区魚町4-3-8" },
+    { time:"11:50", title:"Bekk（イタリアン）", note:"Pocket Concierge 預約。需在 11:50 前入店，12:00 全員一起開始，約 14:00 結束。", tags:[["Pocket Concierge","book"]], addr:"福岡県北九州市小倉北区魚町4-3-8 モナトリエ 1F", map:"Bekk 福岡県北九州市小倉北区魚町4-3-8" },
     { time:"14:00–19:00", title:"小倉自由活動", note:"兩餐都在小倉，下午不必回福岡。旦過市場就在 Bekk 附近。", tags:[["步行","walk"]] },
-    { time:"19:00", title:"お料理 佐藤（日本料理）", must:true, note:"TableCheck 預約。小倉站步行約 2 分鐘。店名是依你寫的「小倉 佐藤」推測的，請對照預約確認信。", tags:[["TableCheck","book"],["步行","walk"]], addr:"福岡県北九州市小倉北区京町3-5-7 KSKコアビル 1F", map:"お料理 佐藤 福岡県北九州市小倉北区京町3-5-7" },
+    { time:"19:00", title:"お料理 佐藤（日本料理）", note:"TableCheck 預約。小倉站步行約 2 分鐘。店名是依你寫的「小倉 佐藤」推測的，請對照預約確認信。", tags:[["TableCheck","book"],["步行","walk"]], addr:"福岡県北九州市小倉北区京町3-5-7 KSKコアビル 1F", map:"お料理 佐藤 福岡県北九州市小倉北区京町3-5-7" },
     { time:"餐後", title:"小倉 → 博多 → 飯店", note:"新幹線約 15–17 分鐘，再轉地下鐵或計程車回飯店。末班車時間請事先查好。", tags:[["新幹線","train"],["地下鐵","metro"],["計程車","taxi"]] }
   ]},
   { d:"12/15", w:"二", title:"晚餐吃壽司", icon:"sushi", items:[
     { time:"白天", title:"自由活動", note:"這天白天沒有預約。", tags:[["步行","walk"]] },
-    { time:"18:00", title:"鮨 志郎", must:true, note:"地址請對照預約確認信，網路上有不同店家使用相近名稱。預約方式未註明，請再確認一次。", tags:[["地下鐵","metro"],["計程車","taxi"]], addr:"福岡県福岡市中央区薬院1-6-9 ニッセイビル 101", map:"鮨 志郎 福岡県福岡市中央区薬院1-6-9" }
+    { time:"18:00", title:"鮨 志郎", note:"地址請對照預約確認信，網路上有不同店家使用相近名稱。預約方式未註明，請再確認一次。", tags:[["地下鐵","metro"],["計程車","taxi"]], addr:"福岡県福岡市中央区薬院1-6-9 ニッセイビル 101", map:"鮨 志郎 福岡県福岡市中央区薬院1-6-9" }
   ]},
   { d:"12/16", w:"三", title:"晚餐 L’Ermita", icon:"tower", items:[
     { time:"白天", title:"自由活動", note:"這天白天沒有預約。", tags:[["步行","walk"]] },
-    { time:"19:00", title:"L’Ermita（現代西班牙料理）", must:true, note:"TableCheck 預約。地下鐵空港線「唐人町」站步行約 3 分鐘。", tags:[["TableCheck","book"],["地下鐵","metro"]], addr:"福岡県福岡市中央区黒門2-14 コアマンション大濠 2F", map:"L'Ermita 福岡県福岡市中央区黒門2-14" }
+    { time:"19:00", title:"L’Ermita（現代西班牙料理）", note:"TableCheck 預約。地下鐵空港線「唐人町」站步行約 3 分鐘。", tags:[["TableCheck","book"],["地下鐵","metro"]], addr:"福岡県福岡市中央区黒門2-14 コアマンション大濠 2F", map:"L'Ermita 福岡県福岡市中央区黒門2-14" }
   ]},
   { d:"12/17", w:"四", title:"午餐後回台北", icon:"plane", items:[
     { time:"11:00 前", title:"退房、寄放行李", note:"請飯店先保管行李，午餐後再回來取。", tags:[["步行","walk"]], addr:"福岡県福岡市中央区春吉3-4-6", mapUrl:HOTEL_MAP },
-    { time:"13:30", title:"在掌（壽司）", must:true, note:"TableCheck 預約。和飯店在相鄰的區域（春吉／西中洲），可以步行前往，實際時間請以地圖為準。", tags:[["TableCheck","book"],["步行","walk"]], addr:"福岡県福岡市中央区西中洲3-20 連ラウンドビル 2F", map:"在掌 福岡県福岡市中央区西中洲3-20" },
+    { time:"13:30", title:"在掌（壽司）", note:"TableCheck 預約。和飯店在相鄰的區域（春吉／西中洲），可以步行前往，實際時間請以地圖為準。", tags:[["TableCheck","book"],["步行","walk"]], addr:"福岡県福岡市中央区西中洲3-20 連ラウンドビル 2F", map:"在掌 福岡県福岡市中央区西中洲3-20" },
     { time:"午後", title:"自由活動", note:"飛機是晚上的，午餐後還有時間逛逛。", tags:[["步行","walk"]] },
     { time:"約 18:00", title:"回飯店取行李 → 福岡機場", note:"建議：國際線建議起飛前約 2 小時到機場。可搭計程車直達國際線航廈。", tags:[["計程車","taxi"]] },
     { time:"20:55 → 22:40", title:"福岡 → 桃園 T2（BR 101）", note:"起飛為日本時間，抵達為台灣時間。", tags:[["飛機","fly"]] }
@@ -344,9 +333,9 @@ function renderDay(i, animate){
   panel.innerHTML = `
     <div class="day-head">${ICONS[day.icon]}<div><div class="note">${day.d}（${day.w}）Day ${i+1}</div><h3>${esc(day.title)}</h3></div></div>
     <ol class="timeline">${day.items.map(it=>`
-      <li class="tl${it.must?" must":""}"><div class="card">
+      <li class="tl"><div class="card">
         <time>${esc(it.time)}</time>
-        <h4>${esc(it.title)}${it.must?'<span class="must-tag">必去</span>':""}</h4>
+        <h4>${esc(it.title)}</h4>
         ${it.note?`<p>${esc(it.note)}</p>`:""}
         <div class="tags">${it.tags.map(([t,c])=>`<span class="tag t-${c}">${esc(t)}</span>`).join("")}</div>
         ${it.addr?`<p class="addr">🏠 ${esc(it.addr)}</p>`:""}
@@ -370,16 +359,12 @@ DAYS.forEach((day,i)=>{
 });
 renderDay(0,false);
 
-/* countdown */
-const pad = n => String(n).padStart(2,"0");
+/* countdown: days only */
 function tick(){
-  let s = Math.max(0, Math.floor((DEPART - Date.now())/1000));
-  document.getElementById("cd-d").textContent = Math.floor(s/86400);
-  document.getElementById("cd-h").textContent = pad(Math.floor(s%86400/3600));
-  document.getElementById("cd-m").textContent = pad(Math.floor(s%3600/60));
-  document.getElementById("cd-s").textContent = pad(s%60);
+  const days = Math.max(0, Math.ceil((DEPART - Date.now())/86400000));
+  document.getElementById("cd-d").textContent = days;
 }
-tick(); setInterval(tick,1000);
+tick(); setInterval(tick,60000);
 </script>
 </body>
 </html>
