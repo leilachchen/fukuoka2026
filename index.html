@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>福岡美食小旅行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFCF6; --ink:#3E3A39;
+  --coral:#F2A497; --yellow:#F6D27A; --water:#A8D3E6; --green:#B9DAA5;
+  --coral-l:#FBE3DE; --yellow-l:#FCF1D3; --water-l:#E3F1F7; --green-l:#E6F1DF;
+  --line:3px solid var(--ink); --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:"Huninn",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--paper);border-bottom:var(--line)}
+nav ul{list-style:none;display:flex;justify-content:space-between;gap:4px;max-width:720px;margin:0 auto;padding:10px 12px}
+nav a{display:block;text-decoration:none;font-size:13px;padding:6px 10px;border:2px solid transparent;border-radius:999px;white-space:nowrap}
+nav a:hover,nav a:focus-visible{border-color:var(--ink);background:var(--yellow-l);outline:none}
+
+main{max-width:720px;margin:0 auto;padding:72px 16px 40px}
+section{margin-top:36px}
+h2{font-size:18px;font-weight:400;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+h2 .dot{width:18px;height:18px;border:var(--line);border-radius:50%;flex:none}
+.card{background:#fff;border:var(--line);border-radius:var(--r);padding:16px}
+.note{font-size:12px;opacity:.75}
+.ph{display:inline-block;background:var(--yellow-l);border:2px dashed var(--ink);border-radius:8px;padding:0 6px;font-size:13px}
+
+/* hero */
+.hero{margin-top:12px;text-align:center}
+.hero-art{border:var(--line);border-radius:var(--r);overflow:hidden;background:var(--water-l)}
+.hero-art svg{display:block;width:100%;height:auto}
+.hero h1{font-size:24px;font-weight:400;margin-top:16px;letter-spacing:2px}
+.hero .sub{font-size:13px;margin-top:2px}
+.countdown{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.cd{width:64px;background:#fff;border:var(--line);border-radius:18px;padding:8px 0}
+.cd b{display:block;font-size:20px;font-weight:400;line-height:1.2}
+.cd span{font-size:12px}
+.cd:nth-child(1){background:var(--coral-l)}.cd:nth-child(2){background:var(--yellow-l)}
+.cd:nth-child(3){background:var(--water-l)}.cd:nth-child(4){background:var(--green-l)}
+
+/* flights */
+.flights{display:grid;gap:14px}
+.flight{display:flex;flex-direction:column;gap:10px}
+.flight .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.flight .city{text-align:center}
+.flight .city b{display:block;font-size:20px;font-weight:400}
+.flight .city span{font-size:12px}
+.flight .path{flex:1;border-top:3px dashed var(--ink);position:relative;margin:0 6px}
+.flight .path svg{position:absolute;left:50%;top:-15px;transform:translateX(-50%);width:30px;height:30px;background:#fff}
+.badge{display:inline-block;font-size:12px;padding:1px 10px;border:2px solid var(--ink);border-radius:999px}
+.flight dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px;line-height:1.5;border-top:2px dashed var(--ink);padding-top:10px}
+.flight dt{opacity:.7;font-size:12px;padding-top:1px;white-space:nowrap}
+
+/* days */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;font-family:inherit;color:var(--ink);background:#fff;border:var(--line);border-radius:18px;padding:6px 12px;text-align:center;cursor:pointer;min-width:62px}
+.tab b{display:block;font-size:15px;font-weight:400;line-height:1.2}
+.tab span{font-size:12px}
+.tab[aria-selected="true"]{background:var(--yellow)}
+.tab:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.day-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.day-head svg{width:52px;height:52px;flex:none}
+.day-head h3{font-size:15px;font-weight:400}
+.timeline{list-style:none;position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;border-left:3px dashed var(--ink)}
+.tl{position:relative;margin-bottom:14px}
+.tl::before{content:"";position:absolute;left:-26px;top:18px;width:16px;height:16px;border:var(--line);border-radius:50%;background:var(--paper)}
+.tl.must::before{background:var(--coral)}
+.tl .card{padding:12px 14px}
+.tl time{font-size:12px;background:var(--water-l);border:2px solid var(--ink);border-radius:8px;padding:0 6px}
+.tl h4{font-size:15px;font-weight:400;margin:6px 0 4px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.must-tag{font-size:12px;background:var(--coral);border:2px solid var(--ink);border-radius:999px;padding:0 8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:12px;border:2px solid var(--ink);border-radius:999px;padding:0 8px}
+.t-fly{background:var(--water)}.t-train{background:var(--green)}.t-metro{background:var(--yellow)}
+.t-taxi{background:var(--coral-l)}.t-walk{background:var(--green-l)}.t-book{background:#fff}
+.tl p{font-size:13px;line-height:1.5}
+.tl .map{font-size:12px;display:inline-block;margin-top:6px;background:var(--water-l);border:2px solid var(--ink);border-radius:999px;padding:1px 10px;text-decoration:none}
+.tl .addr{font-size:12px;margin-top:6px;background:var(--paper);border:2px dashed var(--ink);border-radius:10px;padding:4px 8px}
+.bounce{animation:bounce .55s cubic-bezier(.28,1.6,.5,1)}
+@keyframes bounce{0%{transform:translateY(14px) scale(.97);opacity:0}60%{transform:translateY(-6px) scale(1.01);opacity:1}100%{transform:none}}
+
+/* stay */
+.stay-icon{width:40px;height:40px;margin-left:auto}
+.stay dl{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;font-size:13px;line-height:1.5}
+.stay dt{opacity:.7;font-size:12px;padding-top:1px;white-space:nowrap}
+.stay dd{min-width:0}
+.stay .one{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stay .name span{display:block}
+
+footer{text-align:center;font-size:12px;padding:24px 16px 40px;opacity:.75}
+
+/* illustration motion */
+.float{animation:float 4s ease-in-out infinite}
+.drift{animation:drift 14s linear infinite}
+.drift2{animation:drift 20s linear infinite}
+.spin{animation:spin 24s linear infinite;transform-box:fill-box;transform-origin:center}
+.train{animation:train 9s ease-in-out infinite}
+.wave{animation:wave 3s ease-in-out infinite}
+.sway{animation:sway 3s ease-in-out infinite;transform-box:fill-box;transform-origin:top center}
+@keyframes float{50%{transform:translateY(-6px)}}
+@keyframes drift{0%{transform:translateX(-80px)}100%{transform:translateX(440px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes train{0%,100%{transform:translateX(-10px)}50%{transform:translateX(18px)}}
+@keyframes wave{50%{transform:translateX(-8px)}}
+@keyframes sway{50%{transform:rotate(4deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media (min-width:600px){
+  .flights{grid-template-columns:1fr 1fr}
+  nav a{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="主選單">
+  <ul>
+    <li><a href="#home">首頁</a></li>
+    <li><a href="#flight">航班</a></li>
+    <li><a href="#days">行程</a></li>
+    <li><a href="#stay">住宿</a></li>
+  </ul>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-art">
+    <svg viewBox="0 0 360 240" role="img" aria-label="福岡塔、新幹線、屋台與博多灣的插圖">
+      <rect width="360" height="240" fill="#E3F1F7"/>
+      <!-- sun -->
+      <g class="spin">
+        <circle cx="300" cy="46" r="20" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+        <g stroke="#3E3A39" stroke-width="3" stroke-linecap="round">
+          <line x1="300" y1="14" x2="300" y2="20"/><line x1="300" y1="72" x2="300" y2="78"/>
+          <line x1="268" y1="46" x2="274" y2="46"/><line x1="326" y1="46" x2="332" y2="46"/>
+          <line x1="278" y1="24" x2="282" y2="28"/><line x1="318" y1="64" x2="322" y2="68"/>
+          <line x1="322" y1="24" x2="318" y2="28"/><line x1="282" y1="64" x2="278" y2="68"/>
+        </g>
+      </g>
+      <!-- clouds -->
+      <g class="drift"><path d="M20 60a12 12 0 0 1 22-6 10 10 0 0 1 18 6z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
+      <g class="drift2" style="animation-delay:-8s"><path d="M10 34a10 10 0 0 1 18-5 8 8 0 0 1 15 5z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g>
+      <!-- plane -->
+      <g class="float" style="animation-delay:-1s">
+        <g transform="translate(180 40) rotate(-8)">
+          <path d="M0 10 L44 6 Q54 8 44 14 L0 14 Z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M18 9 L28 -4 L32 -4 L28 9 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M2 10 L-2 0 L6 0 L10 10 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+      </g>
+      <!-- hills -->
+      <path d="M0 160 Q60 118 120 150 T240 140 T360 150 V180 H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Fukuoka Tower -->
+      <g>
+        <path d="M64 168 L70 56 L80 56 L86 168 Z" fill="#E3F1F7" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#3E3A39" stroke-width="2"><line x1="69" y1="80" x2="81" y2="80"/><line x1="68" y1="104" x2="82" y2="104"/><line x1="67" y1="128" x2="83" y2="128"/><line x1="66" y1="150" x2="84" y2="150"/></g>
+        <rect x="62" y="44" width="26" height="12" rx="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+        <line x1="75" y1="44" x2="75" y2="24" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="75" cy="22" r="3" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/>
+      </g>
+      <!-- yatai -->
+      <g>
+        <rect x="236" y="128" width="64" height="36" rx="4" fill="#fff" stroke="#3E3A39" stroke-width="3"/>
+        <path d="M228 128 L240 108 H296 L308 128 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <g class="sway"><rect x="244" y="128" width="12" height="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/></g>
+        <g class="sway" style="animation-delay:-.6s"><rect x="262" y="128" width="12" height="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/></g>
+        <g class="sway" style="animation-delay:-1.2s"><rect x="280" y="128" width="12" height="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/></g>
+        <g class="sway"><ellipse cx="226" cy="138" rx="7" ry="10" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/></g>
+        <circle cx="246" cy="170" r="6" fill="#fff" stroke="#3E3A39" stroke-width="3"/>
+        <circle cx="290" cy="170" r="6" fill="#fff" stroke="#3E3A39" stroke-width="3"/>
+      </g>
+      <!-- track + shinkansen -->
+      <rect x="0" y="180" width="360" height="12" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+      <g class="train">
+        <path d="M110 178 V160 Q110 154 116 154 H200 Q236 154 250 172 Q254 178 246 178 Z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M110 170 H250" stroke="#A8D3E6" stroke-width="5"/>
+        <g fill="#A8D3E6" stroke="#3E3A39" stroke-width="2">
+          <rect x="122" y="159" width="12" height="7" rx="2"/><rect x="142" y="159" width="12" height="7" rx="2"/>
+          <rect x="162" y="159" width="12" height="7" rx="2"/><rect x="182" y="159" width="12" height="7" rx="2"/>
+          <path d="M210 158 H222 Q234 160 238 166 H210 Z"/>
+        </g>
+      </g>
+      <!-- sea -->
+      <rect x="0" y="192" width="360" height="48" fill="#A8D3E6"/>
+      <g class="wave" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round">
+        <path d="M20 212 q8 -6 16 0 t16 0"/><path d="M120 222 q8 -6 16 0 t16 0"/><path d="M230 210 q8 -6 16 0 t16 0"/><path d="M300 226 q8 -6 16 0 t16 0"/>
+      </g>
+      <line x1="0" y1="192" x2="360" y2="192" stroke="#3E3A39" stroke-width="3"/>
+    </svg>
+  </div>
+  <h1>福岡美食小旅行</h1>
+  <p class="sub">台北 ✈ 福岡｜2026/12/13（日）– 12/17（四）</p>
+  <div class="countdown" aria-live="polite">
+    <div class="cd"><b id="cd-d">--</b><span>天</span></div>
+    <div class="cd"><b id="cd-h">--</b><span>時</span></div>
+    <div class="cd"><b id="cd-m">--</b><span>分</span></div>
+    <div class="cd"><b id="cd-s">--</b><span>秒</span></div>
+  </div>
+  <p class="note" style="margin-top:8px">倒數至 12/13 08:00 起飛（台北時間）</p>
+</section>
+
+<!-- FLIGHTS -->
+<section id="flight">
+  <h2><span class="dot" style="background:var(--water)"></span>航班</h2>
+  <div class="flights">
+    <article class="card flight" style="background:var(--water-l)">
+      <div><span class="badge" style="background:var(--water)">去程</span> 12/13（日）</div>
+      <div class="row">
+        <div class="city"><b>TPE</b><span>台北</span></div>
+        <div class="path"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 16 L24 12 Q29 13 24 17 L4 18Z M12 14 L17 6 L19 6 L17 14Z" fill="#fff" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+        <div class="city"><b>FUK</b><span>福岡</span></div>
+      </div>
+      <dl>
+        <dt>航班</dt><dd>長榮航空 BR 106</dd>
+        <dt>起飛</dt><dd>08:00 桃園機場 第二航廈</dd>
+        <dt>抵達</dt><dd>11:15 福岡機場 Terminal I（日本時間）</dd>
+        <dt>飛行</dt><dd>2 小時 15 分</dd>
+      </dl>
+    </article>
+    <article class="card flight" style="background:var(--coral-l)">
+      <div><span class="badge" style="background:var(--coral)">回程</span> 12/17（四）</div>
+      <div class="row">
+        <div class="city"><b>FUK</b><span>福岡</span></div>
+        <div class="path"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 16 L24 12 Q29 13 24 17 L4 18Z M12 14 L17 6 L19 6 L17 14Z" fill="#fff" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+        <div class="city"><b>TPE</b><span>台北</span></div>
+      </div>
+      <dl>
+        <dt>航班</dt><dd>長榮航空 BR 101</dd>
+        <dt>起飛</dt><dd>20:55 福岡機場 Terminal I（日本時間）</dd>
+        <dt>抵達</dt><dd>22:40 桃園機場 第二航廈</dd>
+        <dt>飛行</dt><dd>2 小時 45 分</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<!-- DAYS -->
+<section id="days">
+  <h2><span class="dot" style="background:var(--yellow)"></span>每日行程</h2>
+  <div class="tabs" role="tablist" aria-label="選擇日期" id="tabs"></div>
+  <div id="panel" role="tabpanel" tabindex="0"></div>
+  <p class="note" style="margin-top:4px">＊餐廳時間與預約平台依你提供的資料；標示「建議」的交通與安排為我的推估，地點請以預約確認信為準。</p>
+</section>
+
+<!-- STAY -->
+<section id="stay">
+  <h2><span class="dot" style="background:var(--coral)"></span>住宿資訊<svg class="stay-icon" viewBox="0 0 80 80" aria-hidden="true">
+      <g class="float">
+        <rect x="14" y="34" width="52" height="36" rx="6" fill="#FCF1D3" stroke="#3E3A39" stroke-width="3"/>
+        <path d="M8 38 L40 12 L72 38 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="34" y="48" width="12" height="22" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+        <rect x="20" y="42" width="9" height="9" rx="2" fill="#fff" stroke="#3E3A39" stroke-width="2.5"/>
+        <rect x="51" y="42" width="9" height="9" rx="2" fill="#fff" stroke="#3E3A39" stroke-width="2.5"/>
+      </g>
+    </svg></h2>
+  <div class="card stay">
+    <dl>
+      <dt>飯店</dt><dd class="name"><span>The OneFive Villa Fukuoka</span><span>ザ・ワンファイブヴィラ福岡</span></dd>
+      <dt>地址</dt><dd class="one">福岡県福岡市中央区春吉3-4-6</dd>
+      <dt>車站</dt><dd class="one">七隈線 櫛田神社前站</dd>
+      <dt>入住</dt><dd>12/13（日）15:00 起</dd>
+      <dt>退房</dt><dd>12/17（四）11:00 前</dd>
+      <dt>訂房編號</dt><dd><span class="ph">待填</span></dd>
+      <dt>地圖</dt><dd><a href="https://maps.app.goo.gl/Srjkb7Fb7hiFcZqG8?g_st=ic" target="_blank" rel="noopener">📍 Google 地圖</a></dd>
+      <dt>備註</dt><dd>12/17 午餐後才去機場，可請飯店寄放行李。入住／退房時間為訂房網站上的公開資訊，請以你的訂房確認信為準。</dd>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer>Made for 2026 冬天的福岡 ♡</footer>
+
+<script>
+const DEPART = new Date("2026-12-13T08:00:00+08:00");
+const q = n => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(n);
+
+const HOTEL_MAP = "https://maps.app.goo.gl/Srjkb7Fb7hiFcZqG8?g_st=ic";
+
+const DAYS = [
+  { d:"12/13", w:"日", title:"出發！抵達福岡", icon:"plane", items:[
+    { time:"08:00 → 11:15", title:"桃園 T2 → 福岡（BR 106）", note:"抵達時間為日本時間。", tags:[["飛機","fly"]] },
+    { time:"午後", title:"前往飯店、寄放行李", note:"建議：搭計程車直達；或搭接駁巴士到國內線航廈轉地下鐵。入住 15:00 起，可先寄放行李。", tags:[["計程車","taxi"],["地下鐵","metro"]], addr:"福岡県福岡市中央区春吉3-4-6", mapUrl:HOTEL_MAP },
+    { time:"15:00 起", title:"The OneFive Villa Fukuoka 入住", note:"最近車站為七隈線「櫛田神社前」。", tags:[["步行","walk"]] },
+    { time:"晚上", title:"自由活動", note:"飯店就在那珂川畔，對岸就是中洲。", tags:[["步行","walk"]] }
+  ]},
+  { d:"12/14", w:"一", title:"小倉一日美食", icon:"train", items:[
+    { time:"10:20", title:"從飯店出發 → 博多站", note:"建議：七隈線 櫛田神社前 → 博多（1 站），或搭計程車。", tags:[["地下鐵","metro"],["計程車","taxi"]] },
+    { time:"10:50–11:00", title:"博多 → 小倉（山陽新幹線）", note:"約 15–17 分鐘，自由席 2,160 円，班次頻繁、每班都停小倉。實際班次請在出發前查 JR 時刻表確認。", tags:[["新幹線","train"]] },
+    { time:"約 11:15", title:"小倉站 → Bekk", note:"小倉站步行約 10 分鐘；或搭單軌電車到旦過站，步行約 3 分鐘。", tags:[["步行","walk"],["單軌電車","metro"]] },
+    { time:"11:50", title:"Bekk（イタリアン）", must:true, note:"Pocket Concierge 預約。需在 11:50 前入店，12:00 全員一起開始，約 14:00 結束。", tags:[["Pocket Concierge","book"]], addr:"福岡県北九州市小倉北区魚町4-3-8 モナトリエ 1F", map:"Bekk 福岡県北九州市小倉北区魚町4-3-8" },
+    { time:"14:00–19:00", title:"小倉自由活動", note:"兩餐都在小倉，下午不必回福岡。旦過市場就在 Bekk 附近。", tags:[["步行","walk"]] },
+    { time:"19:00", title:"お料理 佐藤（日本料理）", must:true, note:"TableCheck 預約。小倉站步行約 2 分鐘。店名是依你寫的「小倉 佐藤」推測的，請對照預約確認信。", tags:[["TableCheck","book"],["步行","walk"]], addr:"福岡県北九州市小倉北区京町3-5-7 KSKコアビル 1F", map:"お料理 佐藤 福岡県北九州市小倉北区京町3-5-7" },
+    { time:"餐後", title:"小倉 → 博多 → 飯店", note:"新幹線約 15–17 分鐘，再轉地下鐵或計程車回飯店。末班車時間請事先查好。", tags:[["新幹線","train"],["地下鐵","metro"],["計程車","taxi"]] }
+  ]},
+  { d:"12/15", w:"二", title:"晚餐吃壽司", icon:"sushi", items:[
+    { time:"白天", title:"自由活動", note:"這天白天沒有預約。", tags:[["步行","walk"]] },
+    { time:"18:00", title:"鮨 志郎", must:true, note:"地址請對照預約確認信，網路上有不同店家使用相近名稱。預約方式未註明，請再確認一次。", tags:[["地下鐵","metro"],["計程車","taxi"]], addr:"福岡県福岡市中央区薬院1-6-9 ニッセイビル 101", map:"鮨 志郎 福岡県福岡市中央区薬院1-6-9" }
+  ]},
+  { d:"12/16", w:"三", title:"晚餐 L’Ermita", icon:"tower", items:[
+    { time:"白天", title:"自由活動", note:"這天白天沒有預約。", tags:[["步行","walk"]] },
+    { time:"19:00", title:"L’Ermita（現代西班牙料理）", must:true, note:"TableCheck 預約。地下鐵空港線「唐人町」站步行約 3 分鐘。", tags:[["TableCheck","book"],["地下鐵","metro"]], addr:"福岡県福岡市中央区黒門2-14 コアマンション大濠 2F", map:"L'Ermita 福岡県福岡市中央区黒門2-14" }
+  ]},
+  { d:"12/17", w:"四", title:"午餐後回台北", icon:"plane", items:[
+    { time:"11:00 前", title:"退房、寄放行李", note:"請飯店先保管行李，午餐後再回來取。", tags:[["步行","walk"]], addr:"福岡県福岡市中央区春吉3-4-6", mapUrl:HOTEL_MAP },
+    { time:"13:30", title:"在掌（壽司）", must:true, note:"TableCheck 預約。和飯店在相鄰的區域（春吉／西中洲），可以步行前往，實際時間請以地圖為準。", tags:[["TableCheck","book"],["步行","walk"]], addr:"福岡県福岡市中央区西中洲3-20 連ラウンドビル 2F", map:"在掌 福岡県福岡市中央区西中洲3-20" },
+    { time:"午後", title:"自由活動", note:"飛機是晚上的，午餐後還有時間逛逛。", tags:[["步行","walk"]] },
+    { time:"約 18:00", title:"回飯店取行李 → 福岡機場", note:"建議：國際線建議起飛前約 2 小時到機場。可搭計程車直達國際線航廈。", tags:[["計程車","taxi"]] },
+    { time:"20:55 → 22:40", title:"福岡 → 桃園 T2（BR 101）", note:"起飛為日本時間，抵達為台灣時間。", tags:[["飛機","fly"]] }
+  ]}
+];
+
+const ICONS = {
+  plane:`<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#E3F1F7" stroke="#3E3A39" stroke-width="3"/><g class="float"><path d="M12 34 L46 30 Q56 32 46 37 L12 38Z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><path d="M26 32 L34 20 L38 20 L35 32Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/></g></svg>`,
+  train:`<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#E6F1DF" stroke="#3E3A39" stroke-width="3"/><g class="train"><path d="M10 42 V30 Q10 26 14 26 H36 Q50 26 54 38 Q55 42 51 42Z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><path d="M10 37 H54" stroke="#A8D3E6" stroke-width="4"/><rect x="16" y="29" width="7" height="5" rx="1" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/><rect x="27" y="29" width="7" height="5" rx="1" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/></g></svg>`,
+  sushi:`<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#FBE3DE" stroke="#3E3A39" stroke-width="3"/><g class="float"><rect x="16" y="32" width="32" height="12" rx="6" fill="#fff" stroke="#3E3A39" stroke-width="3"/><path d="M14 33 Q32 18 50 33 Q32 30 14 33Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><rect x="29" y="30" width="6" height="14" fill="#3E3A39"/></g></svg>`,
+  tower:`<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#FCF1D3" stroke="#3E3A39" stroke-width="3"/><g class="float"><path d="M27 52 L30 18 L34 18 L37 52Z" fill="#E3F1F7" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><rect x="25" y="13" width="14" height="6" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/><path d="M24 30 H40 M23 40 H41" stroke="#3E3A39" stroke-width="2"/></g></svg>`
+};
+
+const tabsEl = document.getElementById("tabs"), panel = document.getElementById("panel");
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function renderDay(i, animate){
+  const day = DAYS[i];
+  [...tabsEl.children].forEach((t,j)=>{ t.setAttribute("aria-selected", j===i); t.tabIndex = j===i?0:-1; });
+  panel.setAttribute("aria-labelledby","tab-"+i);
+  panel.innerHTML = `
+    <div class="day-head">${ICONS[day.icon]}<div><div class="note">${day.d}（${day.w}）Day ${i+1}</div><h3>${esc(day.title)}</h3></div></div>
+    <ol class="timeline">${day.items.map(it=>`
+      <li class="tl${it.must?" must":""}"><div class="card">
+        <time>${esc(it.time)}</time>
+        <h4>${esc(it.title)}${it.must?'<span class="must-tag">必去</span>':""}</h4>
+        ${it.note?`<p>${esc(it.note)}</p>`:""}
+        <div class="tags">${it.tags.map(([t,c])=>`<span class="tag t-${c}">${esc(t)}</span>`).join("")}</div>
+        ${it.addr?`<p class="addr">🏠 ${esc(it.addr)}</p>`:""}
+        ${(it.mapUrl||it.map)?`<a class="map" href="${it.mapUrl||q(it.map)}" target="_blank" rel="noopener">📍 Google 地圖</a>`:""}
+      </div></li>`).join("")}
+    </ol>`;
+  if(animate){ panel.classList.remove("bounce"); void panel.offsetWidth; panel.classList.add("bounce"); }
+}
+
+DAYS.forEach((day,i)=>{
+  const b = document.createElement("button");
+  b.className="tab"; b.role="tab"; b.id="tab-"+i;
+  b.innerHTML = `<b>${day.d}</b><span>週${day.w}</span>`;
+  b.addEventListener("click",()=>renderDay(i,true));
+  b.addEventListener("keydown",e=>{
+    if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft") return;
+    const n=(i+(e.key==="ArrowRight"?1:-1)+DAYS.length)%DAYS.length;
+    renderDay(n,true); tabsEl.children[n].focus();
+  });
+  tabsEl.appendChild(b);
+});
+renderDay(0,false);
+
+/* countdown */
+const pad = n => String(n).padStart(2,"0");
+function tick(){
+  let s = Math.max(0, Math.floor((DEPART - Date.now())/1000));
+  document.getElementById("cd-d").textContent = Math.floor(s/86400);
+  document.getElementById("cd-h").textContent = pad(Math.floor(s%86400/3600));
+  document.getElementById("cd-m").textContent = pad(Math.floor(s%3600/60));
+  document.getElementById("cd-s").textContent = pad(s%60);
+}
+tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
